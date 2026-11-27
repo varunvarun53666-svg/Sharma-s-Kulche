@@ -1,7 +1,8 @@
 // Edit branch details here — every page reads from this one file.
 // hours: per weekday (0 = Sunday … 6 = Saturday), 24h "HH:MM". Use null for a closed day.
-import interior from "@/assets/branch-interior.png.asset.json";
-import storefront from "@/assets/branch-storefront.png.asset.json";
+import interior from "@/assets/branch-interior.jpg";
+import storefront from "@/assets/branch-storefront.jpg";
+import bharathiyaCity from "@/assets/bharathiya-city.jpg";
 
 export type DayHours = { open: string; close: string } | null;
 
@@ -33,7 +34,7 @@ export const branches: Branch[] = [
     hours: everyday("11:00", "23:00"),
     hoursLabel: "Every day · 11:00 AM – 11:00 PM",
     mapsQuery: "Sharma's Kulche Kammanahalli Bengaluru",
-    image: storefront.url,
+    image: storefront,
     lat: 13.0159,
     lng: 77.6379,
   },
@@ -47,7 +48,7 @@ export const branches: Branch[] = [
     hours: everyday("16:00", "23:30"),
     hoursLabel: "Every day · 4:00 PM – 11:30 PM",
     mapsQuery: "Sharma's Kulche VV Puram Bengaluru",
-    image: interior.url,
+    image: interior,
     lat: 12.9496,
     lng: 77.5735,
   },
@@ -61,7 +62,7 @@ export const branches: Branch[] = [
     hours: everyday("11:00", "22:30"),
     hoursLabel: "Every day · 11:00 AM – 10:30 PM",
     mapsQuery: "Sharma's Kulche Bhartiya City Bengaluru",
-    image: interior.url,
+    image: bharathiyaCity,
     lat: 13.0817,
     lng: 77.6406,
   },
