@@ -5,7 +5,7 @@ import { z } from "zod";
 import making from "@/assets/making-kulcha.jpg";
 import hero from "@/assets/hero-kulcha.jpg";
 import chole from "@/assets/chole-kulche.jpg";
-import interior from "@/assets/branch-interior.png.asset.json";
+import interior from "@/assets/branch-interior.jpg";
 import { branches, brand, whatsappUrl } from "@/data/branches";
 import { pageHead } from "@/components/site/seo";
 import { PageHero } from "@/components/site/PageHero";
@@ -62,7 +62,7 @@ function Story() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <SectionTitle light eyebrow="Meet the Kitchen" title="Where the magic happens" sub="Our cooks shape, stuff and bake hundreds of kulche every day." />
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
-            {[{ s: making, a: "Cook pressing kulcha onto the tawa", c: "md:row-span-2" }, { s: chole, a: "Chole bubbling, ready to serve", c: "" }, { s: interior.url, a: "Our branch kitchen counter", c: "" }, { s: hero, a: "Kulche finished with butter", c: "col-span-2" }].map((x) => (
+            {[{ s: making, a: "Cook pressing kulcha onto the tawa", c: "md:row-span-2" }, { s: chole, a: "Chole bubbling, ready to serve", c: "" }, { s: interior, a: "Our branch kitchen counter", c: "" }, { s: hero, a: "Kulche finished with butter", c: "col-span-2" }].map((x) => (
               <div key={x.a} className={`group overflow-hidden rounded-3xl ${x.c}`}>
                 <img src={x.s} alt={x.a} loading="lazy" className="food-grade size-full min-h-44 object-cover transition-transform duration-700 group-hover:scale-110" />
               </div>

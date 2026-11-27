@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { MapPin, Clock, Phone, Navigation } from "lucide-react";
-import storefront from "@/assets/branch-storefront.png.asset.json";
+import storefront from "@/assets/branch-storefront.png";
 import { branches, directionsUrl, embedUrl } from "@/data/branches";
 import { pageHead } from "@/components/site/seo";
 import { PageHero } from "@/components/site/PageHero";
@@ -15,7 +15,7 @@ export const Route = createFileRoute("/locations")({
 function Locations() {
   return (
     <>
-      <PageHero title="Find a Branch" sub="Three tawas across Bengaluru, all firing up fresh kulche." image={storefront.url} />
+      <PageHero title="Find a Branch" sub="Three tawas across Bengaluru, all firing up fresh kulche." image={storefront} />
       <section className="mx-auto max-w-7xl space-y-12 px-4 py-16 sm:px-6">
         {branches.map((b, i) => (
           <FadeUp key={b.slug}>
