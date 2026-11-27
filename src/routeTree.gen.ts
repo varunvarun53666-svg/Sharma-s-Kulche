@@ -10,33 +10,90 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as LocationsRouteImport } from './routes/locations'
+import { Route as MenuRouteImport } from './routes/menu'
+import { Route as ReviewsRouteImport } from './routes/reviews'
+import { Route as StoryRouteImport } from './routes/story'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocationsRoute = LocationsRouteImport.update({
+  id: '/locations',
+  path: '/locations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MenuRoute = MenuRouteImport.update({
+  id: '/menu',
+  path: '/menu',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewsRoute = ReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StoryRoute = StoryRouteImport.update({
+  id: '/story',
+  path: '/story',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/gallery': typeof GalleryRoute
+  '/locations': typeof LocationsRoute
+  '/menu': typeof MenuRoute
+  '/reviews': typeof ReviewsRoute
+  '/story': typeof StoryRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/gallery': typeof GalleryRoute
+  '/locations': typeof LocationsRoute
+  '/menu': typeof MenuRoute
+  '/reviews': typeof ReviewsRoute
+  '/story': typeof StoryRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/gallery': typeof GalleryRoute
+  '/locations': typeof LocationsRoute
+  '/menu': typeof MenuRoute
+  '/reviews': typeof ReviewsRoute
+  '/story': typeof StoryRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/gallery' | '/locations' | '/menu' | '/reviews' | '/story'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/gallery' | '/locations' | '/menu' | '/reviews' | '/story'
+  id:
+    | '__root__'
+    | '/'
+    | '/gallery'
+    | '/locations'
+    | '/menu'
+    | '/reviews'
+    | '/story'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  GalleryRoute: typeof GalleryRoute
+  LocationsRoute: typeof LocationsRoute
+  MenuRoute: typeof MenuRoute
+  ReviewsRoute: typeof ReviewsRoute
+  StoryRoute: typeof StoryRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +105,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/locations': {
+      id: '/locations'
+      path: '/locations'
+      fullPath: '/locations'
+      preLoaderRoute: typeof LocationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/menu': {
+      id: '/menu'
+      path: '/menu'
+      fullPath: '/menu'
+      preLoaderRoute: typeof MenuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/story': {
+      id: '/story'
+      path: '/story'
+      fullPath: '/story'
+      preLoaderRoute: typeof StoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  GalleryRoute: GalleryRoute,
+  LocationsRoute: LocationsRoute,
+  MenuRoute: MenuRoute,
+  ReviewsRoute: ReviewsRoute,
+  StoryRoute: StoryRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

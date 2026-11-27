@@ -28,3 +28,9 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Sharma's Kulche site
+- Branch, menu and gallery content lives in src/data/*.ts; pages read only from there so the owner edits one file.
+- Reviews: public.reviews with approved=false on insert (RLS); only approved rows are readable. Moderation is done by flipping approved in the database.
+- Open/Closed badges compute in IST via src/lib/hours.ts on the client only (avoids hydration mismatch).
+- Contact form sends via a pre-filled WhatsApp message (no table) — keep it that way unless asked to store enquiries.
