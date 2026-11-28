@@ -14,6 +14,84 @@ export type Database = {
   }
   public: {
     Tables: {
+      lead_rate_limits: {
+        Row: {
+          attempt_count: number
+          key_hash: string
+          window_started_at: string
+        }
+        Insert: {
+          attempt_count?: number
+          key_hash: string
+          window_started_at?: string
+        }
+        Update: {
+          attempt_count?: number
+          key_hash?: string
+          window_started_at?: string
+        }
+        Relationships: []
+      }
+      leads: {
+        Row: {
+          branch: string | null
+          budget: string | null
+          city: string | null
+          created_at: string
+          email: string | null
+          event_date: string | null
+          event_type: string | null
+          experience: string | null
+          guests: number | null
+          has_property: boolean | null
+          id: string
+          lead_type: string
+          message: string | null
+          name: string
+          phone: string
+          source_page: string
+          status: string
+        }
+        Insert: {
+          branch?: string | null
+          budget?: string | null
+          city?: string | null
+          created_at?: string
+          email?: string | null
+          event_date?: string | null
+          event_type?: string | null
+          experience?: string | null
+          guests?: number | null
+          has_property?: boolean | null
+          id?: string
+          lead_type: string
+          message?: string | null
+          name: string
+          phone: string
+          source_page?: string
+          status?: string
+        }
+        Update: {
+          branch?: string | null
+          budget?: string | null
+          city?: string | null
+          created_at?: string
+          email?: string | null
+          event_date?: string | null
+          event_type?: string | null
+          experience?: string | null
+          guests?: number | null
+          has_property?: boolean | null
+          id?: string
+          lead_type?: string
+          message?: string | null
+          name?: string
+          phone?: string
+          source_page?: string
+          status?: string
+        }
+        Relationships: []
+      }
       reviews: {
         Row: {
           approved: boolean
@@ -44,15 +122,43 @@ export type Database = {
         }
         Relationships: []
       }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      consume_lead_rate_limit: {
+        Args: { p_key_hash: string; p_limit: number; p_window_seconds: number }
+        Returns: boolean
+      }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "moderator" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -179,6 +285,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "moderator", "user"],
+    },
   },
 } as const
