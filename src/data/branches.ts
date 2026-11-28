@@ -19,6 +19,7 @@ export type Branch = {
   image: string;
   lat: number;
   lng: number;
+  googleReviewUrl?: string;
 };
 
 const everyday = (open: string, close: string): DayHours[] => Array.from({ length: 7 }, () => ({ open, close }));
@@ -29,8 +30,8 @@ export const branches: Branch[] = [
     name: "Kammanahalli",
     area: "East Bengaluru",
     address: "[ADDRESS] Main Road, Kammanahalli, Bengaluru, Karnataka 560084",
-    phone: "919000000001",
-    phoneDisplay: "+91 90000 00001",
+    phone: "919110478212",
+    phoneDisplay: "+91 91104 78212",
     hours: everyday("11:00", "23:00"),
     hoursLabel: "Every day · 11:00 AM – 11:00 PM",
     mapsQuery: "Sharma's Kulche Kammanahalli Bengaluru",
@@ -43,8 +44,8 @@ export const branches: Branch[] = [
     name: "VV Puram",
     area: "Food Street, South Bengaluru",
     address: "[ADDRESS] VV Puram Food Street, Basavanagudi, Bengaluru, Karnataka 560004",
-    phone: "919000000002",
-    phoneDisplay: "+91 90000 00002",
+    phone: "919110478212",
+    phoneDisplay: "+91 91104 78212",
     hours: everyday("16:00", "23:30"),
     hoursLabel: "Every day · 4:00 PM – 11:30 PM",
     mapsQuery: "Sharma's Kulche VV Puram Bengaluru",
@@ -57,8 +58,8 @@ export const branches: Branch[] = [
     name: "Bharathiya City",
     area: "North Bengaluru",
     address: "[ADDRESS] Bhartiya City Mall, Thanisandra Main Road, Bengaluru, Karnataka 560064",
-    phone: "919000000003",
-    phoneDisplay: "+91 90000 00003",
+    phone: "919110478212",
+    phoneDisplay: "+91 91104 78212",
     hours: everyday("11:00", "22:30"),
     hoursLabel: "Every day · 11:00 AM – 10:30 PM",
     mapsQuery: "Sharma's Kulche Bhartiya City Bengaluru",
@@ -70,10 +71,10 @@ export const branches: Branch[] = [
 
 export const brand = {
   name: "Sharma's Kulche",
-  whatsapp: "919000000001", // [WHATSAPP] number, digits only
-  instagram: "https://instagram.com/", // [INSTAGRAM]
-  facebook: "https://facebook.com/", // [FACEBOOK]
-  googleReviewLink: "https://www.google.com/maps/search/?api=1&query=Sharma%27s+Kulche+Bengaluru", // [GOOGLE_REVIEW_LINK]
+  whatsapp: "919110478212",
+  instagram: "https://www.instagram.com/sharmas_kulche/",
+  facebook: "https://www.facebook.com/profile.php?id=100088905933874",
+  googleReviewLink: "https://www.google.com/maps?cid=13229269514299659261",
   stats: { customers: 150000, years: 8 }, // [X] placeholders
 };
 

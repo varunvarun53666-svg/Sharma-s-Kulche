@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { MapPin, Clock, ArrowRight } from "lucide-react";
 import type { Branch } from "@/data/branches";
 import { OpenBadge } from "./OpenBadge";
+import { GoogleIcon } from "./BrandIcons";
 
 export function BranchPreview({ b }: { b: Branch }) {
   return (
@@ -15,7 +16,10 @@ export function BranchPreview({ b }: { b: Branch }) {
         <p className="mt-1 text-sm text-muted-foreground">{b.area}</p>
         <p className="mt-4 flex gap-2 text-sm"><MapPin className="size-4 shrink-0 text-primary" />{b.address}</p>
         <p className="mt-2 flex gap-2 text-sm"><Clock className="size-4 shrink-0 text-primary" />{b.hoursLabel}</p>
-        <Link to="/locations" hash={b.slug} className="mt-5 inline-flex items-center gap-1 font-semibold text-secondary">View Details <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" /></Link>
+        <div className="mt-5 flex flex-wrap items-center gap-4">
+          <Link to="/locations" hash={b.slug} className="inline-flex items-center gap-1 font-semibold text-secondary">View Details <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" /></Link>
+          {b.googleReviewUrl && <a href={b.googleReviewUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm font-semibold text-secondary"><GoogleIcon className="size-4" />Review this branch</a>}
+        </div>
       </div>
     </article>
   );

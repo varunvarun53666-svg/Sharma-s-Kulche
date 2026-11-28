@@ -127,6 +127,13 @@ function Home() {
           </div>
         </FadeUp>
       </section>
+
+      <section className="px-4 pb-20 sm:px-6">
+        <FadeUp className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 rounded-[2rem] border border-primary/20 bg-card p-7 text-center shadow-soft sm:flex-row sm:text-left">
+          <div><p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Franchise Enquiry</p><h2 className="mt-1 text-3xl">Bring Sharma's Kulche to your neighbourhood.</h2></div>
+          <Link to="/franchise" className="shrink-0 rounded-full bg-fire px-7 py-3.5 font-semibold text-primary-foreground shadow-warm">Own a Sharma's Kulche →</Link>
+        </FadeUp>
+      </section>
     </>
   );
 }

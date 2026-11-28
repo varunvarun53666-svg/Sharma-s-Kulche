@@ -103,6 +103,12 @@
   --charcoal: oklch(0.19 0.015 50);
   --charcoal-foreground: oklch(0.96 0.03 82);
   --veg: oklch(0.55 0.15 145);
+  --social-facebook: oklch(0.548 0.192 260.9);
+  --social-whatsapp: oklch(0.765 0.207 149.6);
+  --social-instagram-1: oklch(0.756 0.162 55.8);
+  --social-instagram-2: oklch(0.591 0.234 352.3);
+  --social-instagram-3: oklch(0.466 0.192 313.4);
+  --social-instagram-4: oklch(0.485 0.151 278.9);
   --chart-1: oklch(0.66 0.18 52); --chart-2: oklch(0.5 0.17 28); --chart-3: oklch(0.83 0.15 80); --chart-4: oklch(0.55 0.15 145); --chart-5: oklch(0.3 0.03 50);
   --sidebar: var(--card); --sidebar-foreground: var(--foreground); --sidebar-primary: var(--primary); --sidebar-primary-foreground: var(--primary-foreground); --sidebar-accent: var(--muted); --sidebar-accent-foreground: var(--foreground); --sidebar-border: var(--border); --sidebar-ring: var(--ring);
   --gradient-fire: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -149,6 +155,13 @@
   100% { transform: translateY(-60vh) scale(1.4); opacity: 0; }
 }
 @utility animate-rise { animation: rise var(--dur, 9s) ease-in infinite; }
+.social-facebook:hover { background: var(--social-facebook); color: var(--charcoal-foreground); }
+.social-whatsapp:hover { background: var(--social-whatsapp); color: var(--charcoal-foreground); }
+.social-instagram:hover {
+  background: linear-gradient(45deg, var(--social-instagram-1), var(--social-instagram-2), var(--social-instagram-3), var(--social-instagram-4));
+  color: var(--charcoal-foreground);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee, .animate-rise { animation: none; }
 

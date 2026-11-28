@@ -1,16 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Instagram, Facebook } from "lucide-react";
 import { z } from "zod";
 import making from "@/assets/making-kulcha.jpg";
 import hero from "@/assets/hero-kulcha.jpg";
 import chole from "@/assets/chole-kulche.jpg";
 import interior from "@/assets/branch-interior.jpg";
-import { branches, brand, whatsappUrl } from "@/data/branches";
+import { branches, whatsappUrl } from "@/data/branches";
 import { pageHead } from "@/components/site/seo";
 import { PageHero } from "@/components/site/PageHero";
 import { FadeUp, SectionTitle } from "@/components/site/FadeUp";
-import { WhatsAppIcon } from "@/components/site/FloatingActions";
+import { SocialLinks, WhatsAppIcon } from "@/components/site/BrandIcons";
 
 export const Route = createFileRoute("/story")({
   head: () => pageHead("Our Story & Contact", "The family recipe behind Sharma's Kulche, and how to reach us for orders, catering and bulk enquiries in Bengaluru."),
@@ -34,7 +33,8 @@ function Story() {
     if (!p.success) { setErrors(Object.fromEntries(p.error.issues.map((i) => [String(i.path[0]), i.message]))); return; }
     setErrors({});
     const d = p.data;
-    const text = `Hi Sharma's Kulche!\nEnquiry: ${d.type}\nName: ${d.name}\nPhone: ${d.phone}\nBranch: ${d.branch}\n\n${d.message}`;
+    const greeting = d.type === "Catering / Bulk order" ? "Hi! I'd like a quote for catering / bulk order." : "Hi Sharma's Kulche! I have an enquiry.";
+    const text = `${greeting}\nName: ${d.name}\nPhone: ${d.phone}\nBranch: ${d.branch}\n\n${d.message}`;
     window.open(whatsappUrl(text), "_blank", "noopener");
   };
   const field = "mt-1.5 w-full rounded-2xl border border-input bg-card px-4 py-3 focus:border-primary focus:outline-hidden";
@@ -75,11 +75,8 @@ function Story() {
         <FadeUp>
           <h2 className="text-4xl sm:text-5xl">Get in touch</h2>
           <p className="mt-3 text-muted-foreground">Questions, feedback, or planning a party? Catering and bulk orders for offices, weddings and events are welcome.</p>
-          <a href={whatsappUrl("Hi Sharma's Kulche! I'd like to enquire about catering / a bulk order.")} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-2 rounded-full bg-veg px-6 py-4 font-semibold text-primary-foreground shadow-warm"><WhatsAppIcon className="size-5" /> Chat on WhatsApp</a>
-          <div className="mt-8 flex gap-3">
-            <a href={brand.instagram} target="_blank" rel="noreferrer" aria-label="Instagram" className="rounded-full bg-charcoal p-3 text-charcoal-foreground hover:bg-primary"><Instagram /></a>
-            <a href={brand.facebook} target="_blank" rel="noreferrer" aria-label="Facebook" className="rounded-full bg-charcoal p-3 text-charcoal-foreground hover:bg-primary"><Facebook /></a>
-          </div>
+          <a href={whatsappUrl("Hi Sharma's Kulche! I have an enquiry.")} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-2 rounded-full bg-veg px-6 py-4 font-semibold text-primary-foreground shadow-warm"><WhatsAppIcon className="size-5" /> Chat on WhatsApp</a>
+          <SocialLinks className="mt-8" />
         </FadeUp>
         <FadeUp delay={0.1}>
           <form onSubmit={onSubmit} noValidate className="rounded-[2rem] bg-card p-6 shadow-warm sm:p-8">

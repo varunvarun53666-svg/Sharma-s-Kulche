@@ -1,25 +1,26 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Facebook, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
 import { Logo } from "./Logo";
-import { branches, brand } from "@/data/branches";
+import { branches } from "@/data/branches";
 import { navLinks } from "./Navbar";
+import { SocialLinks } from "./BrandIcons";
+import { useCateringModal } from "./CateringModal";
 
 export function Footer() {
+  const { openCatering } = useCateringModal();
   return (
     <footer className="bg-charcoal pb-28 pt-16 text-charcoal-foreground lg:pb-10">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <Logo light />
           <p className="mt-4 text-sm text-charcoal-foreground/70">Soft, buttery, Delhi-style kulche — made fresh every day across Bengaluru.</p>
-          <div className="mt-5 flex gap-3">
-            <a href={brand.instagram} target="_blank" rel="noreferrer" aria-label="Instagram" className="rounded-full bg-charcoal-foreground/10 p-2.5 transition-colors hover:bg-primary"><Instagram className="size-5" /></a>
-            <a href={brand.facebook} target="_blank" rel="noreferrer" aria-label="Facebook" className="rounded-full bg-charcoal-foreground/10 p-2.5 transition-colors hover:bg-primary"><Facebook className="size-5" /></a>
-          </div>
+          <SocialLinks className="mt-5" />
         </div>
         <div>
           <h3 className="text-lg text-accent">Explore</h3>
           <ul className="mt-4 space-y-2 text-sm">
             {navLinks.map((l) => <li key={l.to}><Link to={l.to} className="text-charcoal-foreground/75 hover:text-primary">{l.label}</Link></li>)}
+            <li><button onClick={openCatering} className="text-left text-charcoal-foreground/75 hover:text-primary">Catering &amp; Bulk Orders</button></li>
           </ul>
         </div>
         {branches.slice(0, 2).map((b) => (

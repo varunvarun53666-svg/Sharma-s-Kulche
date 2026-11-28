@@ -11,6 +11,7 @@ import { pageHead } from "@/components/site/seo";
 import { PageHero } from "@/components/site/PageHero";
 import { FadeUp, SectionTitle } from "@/components/site/FadeUp";
 import { Stars } from "@/components/site/Stars";
+import { GoogleIcon } from "@/components/site/BrandIcons";
 
 export const Route = createFileRoute("/reviews")({
   loader: ({ context }) => context.queryClient.ensureQueryData(reviewsQuery),
@@ -136,7 +137,8 @@ function GoogleReviews() {
       <div className="mt-6 grid gap-3">
         {[0, 1].map((i) => <div key={i} className="h-20 animate-pulse rounded-2xl bg-charcoal-foreground/10" />)}
       </div>
-      <a href={brand.googleReviewLink} target="_blank" rel="noreferrer" className="mt-6 inline-flex justify-center rounded-full bg-charcoal-foreground px-6 py-4 font-semibold text-charcoal">★ Review us on Google</a>
+      <a href={brand.googleReviewLink} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-charcoal-foreground px-6 py-4 font-semibold text-charcoal"><GoogleIcon /> Review us on Google</a>
+      <p className="mt-3 text-center text-sm text-charcoal-foreground/60">Loved your visit? It takes 30 seconds.</p>
     </div>
   );
 }

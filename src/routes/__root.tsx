@@ -19,6 +19,8 @@ import { Footer } from "@/components/site/Footer";
 import { FloatingActions } from "@/components/site/FloatingActions";
 import { Toaster } from "@/components/ui/sonner";
 import { branches } from "@/data/branches";
+import { CateringModalProvider } from "@/components/site/CateringModal";
+import { supabase } from "@/integrations/supabase/client";
 
 const restaurantSchema = {
   "@context": "https://schema.org",
@@ -142,9 +144,20 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const pathname = useLocation({ select: (l) => l.pathname });
+  const router = useRouter();
+
+  useEffect(() => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
+      if (event !== "SIGNED_IN" && event !== "SIGNED_OUT" && event !== "USER_UPDATED") return;
+      router.invalidate();
+      if (event !== "SIGNED_OUT") queryClient.invalidateQueries();
+    });
+    return () => subscription.unsubscribe();
+  }, [router, queryClient]);
 
   return (
     <QueryClientProvider client={queryClient}>
+      <CateringModalProvider>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground">Skip to content</a>
       <Navbar />
@@ -156,6 +169,7 @@ function RootComponent() {
       <Footer />
       <FloatingActions />
       <Toaster richColors position="top-center" />
+      </CateringModalProvider>
     </QueryClientProvider>
   );
 }
